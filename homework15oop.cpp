@@ -5,19 +5,34 @@
 #include "laptop.h"
 
 int main() {
-    Laptop laptop("ExampleBrand", "ExampleProcessor", "ExampleMouse",
-        "ExamplePrinter", "ExampleVideoCard");
+    Processor* processor = new Processor("intel core i7");
+    Mouse* mouse = new Mouse("SpaceMouse Pro");
+    Printer* printer = new Printer("HP DesignJet");
+    VideoCard* videoCard = new VideoCard("AMD");
 
-    std::cout << "Laptop brand: " << laptop.GetBrand() << std::endl;
-    std::cout << "Processor model: " << laptop.GetProcessorModel()
-        << std::endl;
-    std::cout << "Mouse brand: " << laptop.GetMouseBrand() << std::endl;
-    std::cout << "Printer brand: " << laptop.GetPrinterBrand() << std::endl;
-    std::cout << "Video card model: " << laptop.GetVideoCardModel()
-        << std::endl;
+    Laptop* laptop = new Laptop("HP Elite", processor, "ExampleMouse",
+        mouse, "ExamplePrinter", printer, "ExampleVideoCard",
+        videoCard);
+
+    std::cout << "Laptop brand: " << laptop->GetBrand() << std::endl;
+    std::cout << "Processor model: " << laptop->GetProcessorModel() << std::endl;
+    std::cout << "Mouse brand: " << laptop->GetMouseBrand() << std::endl;
+    std::cout << "Printer brand: " << laptop->GetPrinterBrand() << std::endl;
+    std::cout << "Video card model: " << laptop->GetVideoCardModel() << std::endl;
+    delete laptop;  // Удаление компьютера, но мышка и принтер остаются
+    std::cout << "Mouse brand: " << mouse->GetBrand() << std::endl;
+    std::cout << "Printer brand: " << printer->GetBrand() << std::endl;
+   
+    
 
     return 0;
 }
+
+
+
+
+
+
 
 
 
